@@ -1,3 +1,3 @@
 # WikiLand
 
-To download the Chromedriver vist [this](https://chromedriver.chromium.org/downloads) link.
+To download the Chromedriver visit [this](https://chromedriver.chromium.org/downloads) link.

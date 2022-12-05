@@ -11,8 +11,9 @@ def process_text(text: str) -> List[str]:
     """
 
     text = text.split('^')[0]
-    text = re.sub(r'\[\d+\]', '', text)
-    text = re.sub(r'\[\D+\]', '', text)
+    text = re.sub(r'\[\d+\]', ' ', text)
+    text = re.sub(r'\[\D+\]', ' ', text)
+    text = text.replace('\n', ' ')
     text = text.replace('. ', 'y'*26)
     text = text.replace('.', 'z'*26)
     text = text.translate(str.maketrans('', '', string.punctuation))
@@ -20,7 +21,7 @@ def process_text(text: str) -> List[str]:
     text = text.replace('—', '')
     text = text.replace('×', '')
     text = text.replace('z'*26, '.')
-    text = text.replace('\n', ' ')
+    
     text = text.replace('y'*26, ' . ')
     text = text.lower()
     text_array = np.array(text.split(' '))

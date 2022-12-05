@@ -12,6 +12,10 @@ def get_args() -> argparse.Namespace:
     return args
 
 def main() -> None:
+    """
+    Gets the links for the individual Wikipedia pages and stores them in a nested list as [list_of_links, endlink]
+    """
+
     args = get_args()
 
     driver_PATH = './chromedriver'
