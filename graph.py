@@ -13,9 +13,11 @@ class SuperGraph:
         self._max_dist = max_distance
         self._ngraphs = [NGraph(i) for i in range(1, self._max_dist + 1)]
 
+
     def __repr__(self):
         return (f'Supergraph with {len(self._ngraphs)} NGraphs with each having '
                 f'{ {ngraph.nth: len(ngraph.edges()) for ngraph in self._ngraphs} } edges')
+
 
     def add_article(self, word_list: List[str]) -> None:
         for ngraph in self._ngraphs:
@@ -24,7 +26,7 @@ class SuperGraph:
 
     def tally(self) -> None:
         for i in range(1, self._max_dist + 1):
-            pass
+            raise NotImplementedError
     
 
 
@@ -38,6 +40,7 @@ class NGraph(nx.MultiDiGraph):
         super().__init__()
         self._nth = nth
 
+
     @property
     def nth(self):
         return self._nth
@@ -49,11 +52,11 @@ class NGraph(nx.MultiDiGraph):
         Adds edges from a list of words
         """
 
-
         if self._nth < len(word_list):
             rolled = np.roll(word_list, -self._nth)
             edges = list(zip(word_list, rolled))[:-self._nth]  # Remove last element so it does not wrap around
             self.add_edges_from(edges)
+
 
     def count_edges(self) -> nx.DiGraph:
         returnGraph = nx.DiGraph()
